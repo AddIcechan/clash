@@ -5,23 +5,39 @@ import (
 	"os"
 	"sync"
 
-	"github.com/Dreamacro/clash/adapter"
-	"github.com/Dreamacro/clash/adapter/outboundgroup"
-	"github.com/Dreamacro/clash/component/auth"
-	"github.com/Dreamacro/clash/component/dialer"
-	"github.com/Dreamacro/clash/component/iface"
-	"github.com/Dreamacro/clash/component/profile"
-	"github.com/Dreamacro/clash/component/profile/cachefile"
-	"github.com/Dreamacro/clash/component/resolver"
-	"github.com/Dreamacro/clash/component/trie"
-	"github.com/Dreamacro/clash/config"
-	C "github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/constant/provider"
-	"github.com/Dreamacro/clash/dns"
-	"github.com/Dreamacro/clash/listener"
-	authStore "github.com/Dreamacro/clash/listener/auth"
-	"github.com/Dreamacro/clash/log"
-	"github.com/Dreamacro/clash/tunnel"
+	"clash/config"
+
+	C "clash/constant"
+
+	"clash/log"
+
+	"clash/component/dialer"
+
+	"clash/component/resolver"
+
+	"clash/constant/provider"
+
+	"clash/adapter"
+
+	"clash/component/iface"
+
+	"clash/component/profile/cachefile"
+
+	"clash/component/trie"
+
+	"clash/component/profile"
+
+	"clash/adapter/outboundgroup"
+
+	"clash/component/auth"
+
+	"clash/dns"
+
+	"clash/listener"
+
+	authStore "clash/listener/auth"
+
+	"clash/tunnel"
 )
 
 var mux sync.Mutex

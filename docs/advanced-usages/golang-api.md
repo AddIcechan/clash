@@ -18,8 +18,8 @@ import (
 	"io"
 	"net"
 
-	"github.com/Dreamacro/clash/adapter/outbound"
-	"github.com/Dreamacro/clash/constant"
+	"clash/adapter/outbound"
+	"clash/constant"
 	"github.com/Dreamacro/clash/listener/socks"
 )
 

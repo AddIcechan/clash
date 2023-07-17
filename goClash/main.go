@@ -21,12 +21,17 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/Dreamacro/clash/config"
-	"github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/hub/executor"
-	"github.com/Dreamacro/clash/hub/route"
-	"github.com/Dreamacro/clash/log"
-	"github.com/Dreamacro/clash/tunnel/statistic"
+	"clash/config"
+
+	"clash/constant"
+	"clash/hub/executor"
+
+	"clash/hub/route"
+
+	"clash/log"
+
+	"clash/tunnel/statistic"
+
 	"github.com/oschwald/geoip2-golang"
 	"github.com/phayes/freeport"
 )

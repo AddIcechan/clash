@@ -8,8 +8,9 @@ import (
 	"net"
 	"strings"
 
-	"github.com/Dreamacro/clash/component/dialer"
-	"github.com/Dreamacro/clash/component/resolver"
+	"clash/component/dialer"
+
+	"clash/component/resolver"
 
 	D "github.com/miekg/dns"
 )

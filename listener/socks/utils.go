@@ -3,8 +3,9 @@ package socks
 import (
 	"net"
 
-	"github.com/Dreamacro/clash/common/pool"
-	"github.com/Dreamacro/clash/transport/socks5"
+	"clash/transport/socks5"
+
+	"clash/common/pool"
 )
 
 type packet struct {

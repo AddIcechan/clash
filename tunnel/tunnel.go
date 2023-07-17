@@ -10,15 +10,22 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Dreamacro/clash/adapter/inbound"
-	"github.com/Dreamacro/clash/component/nat"
-	P "github.com/Dreamacro/clash/component/process"
-	"github.com/Dreamacro/clash/component/resolver"
-	C "github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/constant/provider"
-	icontext "github.com/Dreamacro/clash/context"
-	"github.com/Dreamacro/clash/log"
-	"github.com/Dreamacro/clash/tunnel/statistic"
+	C "clash/constant"
+
+	"clash/log"
+
+	"clash/tunnel/statistic"
+
+	icontext "clash/context"
+
+	"clash/component/resolver"
+
+	"clash/constant/provider"
+
+	"clash/adapter/inbound"
+
+	"clash/component/nat"
+	P "clash/component/process"
 
 	"go.uber.org/atomic"
 )

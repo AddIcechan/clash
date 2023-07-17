@@ -6,9 +6,11 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Dreamacro/clash/component/mmdb"
-	C "github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/log"
+	C "clash/constant"
+
+	"clash/log"
+
+	"clash/component/mmdb"
 )
 
 func downloadMMDB(path string) (err error) {

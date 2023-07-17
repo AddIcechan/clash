@@ -4,11 +4,15 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Dreamacro/clash/adapter/outbound"
-	"github.com/Dreamacro/clash/adapter/provider"
-	"github.com/Dreamacro/clash/common/structure"
-	C "github.com/Dreamacro/clash/constant"
-	types "github.com/Dreamacro/clash/constant/provider"
+	C "clash/constant"
+
+	"clash/common/structure"
+
+	types "clash/constant/provider"
+
+	"clash/adapter/outbound"
+
+	"clash/adapter/provider"
 
 	regexp "github.com/dlclark/regexp2"
 )

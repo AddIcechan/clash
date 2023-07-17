@@ -7,16 +7,19 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/Dreamacro/clash/adapter/inbound"
-	"github.com/Dreamacro/clash/config"
-	C "github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/listener/http"
-	"github.com/Dreamacro/clash/listener/mixed"
-	"github.com/Dreamacro/clash/listener/redir"
-	"github.com/Dreamacro/clash/listener/socks"
-	"github.com/Dreamacro/clash/listener/tproxy"
-	"github.com/Dreamacro/clash/listener/tunnel"
-	"github.com/Dreamacro/clash/log"
+	"clash/config"
+
+	C "clash/constant"
+	"clash/log"
+
+	"clash/adapter/inbound"
+
+	"clash/listener/http"
+	"clash/listener/mixed"
+	"clash/listener/redir"
+	"clash/listener/socks"
+	"clash/listener/tproxy"
+	"clash/listener/tunnel"
 
 	"github.com/samber/lo"
 )

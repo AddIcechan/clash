@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Dreamacro/clash/common/observable"
+	"clash/common/observable"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -72,6 +72,10 @@ func Level() LogLevel {
 
 func SetLevel(newLevel LogLevel) {
 	level = newLevel
+}
+
+func LevelCheck() {
+	fmt.Println("Level check")
 }
 
 func print(data Event) {

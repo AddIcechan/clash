@@ -1,3 +1,5 @@
 #! /bin/sh
 
-gomobile bind  -target=ios,macos -o=./framework/Clash.xcframework
+go get golang.org/x/mobile
+gomobile init
+gomobile bind  -target=ios,macos,iossimulator -o=./framework/framework/Clash.xcframework

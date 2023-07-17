@@ -8,19 +8,30 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Dreamacro/clash/adapter"
-	"github.com/Dreamacro/clash/adapter/outbound"
-	"github.com/Dreamacro/clash/adapter/outboundgroup"
-	"github.com/Dreamacro/clash/adapter/provider"
-	"github.com/Dreamacro/clash/component/auth"
-	"github.com/Dreamacro/clash/component/fakeip"
-	"github.com/Dreamacro/clash/component/trie"
-	C "github.com/Dreamacro/clash/constant"
-	providerTypes "github.com/Dreamacro/clash/constant/provider"
-	"github.com/Dreamacro/clash/dns"
-	"github.com/Dreamacro/clash/log"
-	R "github.com/Dreamacro/clash/rule"
-	T "github.com/Dreamacro/clash/tunnel"
+	C "clash/constant"
+
+	"clash/log"
+
+	providerTypes "clash/constant/provider"
+
+	"clash/adapter/outbound"
+
+	"clash/adapter/provider"
+
+	"clash/adapter"
+
+	"clash/component/trie"
+
+	"clash/adapter/outboundgroup"
+
+	"clash/component/auth"
+
+	"clash/component/fakeip"
+
+	"clash/dns"
+
+	R "clash/rule"
+	T "clash/tunnel"
 
 	"github.com/samber/lo"
 	"gopkg.in/yaml.v3"

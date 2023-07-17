@@ -13,8 +13,9 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/Dreamacro/clash/component/dialer"
-	C "github.com/Dreamacro/clash/constant"
+	C "clash/constant"
+
+	"clash/component/dialer"
 )
 
 type Http struct {

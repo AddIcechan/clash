@@ -3,9 +3,10 @@ package tproxy
 import (
 	"net"
 
-	"github.com/Dreamacro/clash/adapter/inbound"
-	C "github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/transport/socks5"
+	C "clash/constant"
+	"clash/transport/socks5"
+
+	"clash/adapter/inbound"
 )
 
 type Listener struct {

@@ -4,13 +4,19 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/Dreamacro/clash/component/resolver"
-	"github.com/Dreamacro/clash/config"
-	"github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/hub/executor"
-	P "github.com/Dreamacro/clash/listener"
-	"github.com/Dreamacro/clash/log"
-	"github.com/Dreamacro/clash/tunnel"
+	"clash/config"
+
+	"clash/constant"
+
+	"clash/hub/executor"
+
+	"clash/log"
+
+	"clash/component/resolver"
+
+	P "clash/listener"
+
+	"clash/tunnel"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
