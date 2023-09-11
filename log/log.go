@@ -25,6 +25,23 @@ type Event struct {
 	Payload  string
 }
 
+func CustomLog(logPath string) {
+	var logFilePath = fmt.Sprintf("%s%s", logPath, "/clash.log")
+	logFile, err := os.OpenFile(logFilePath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	// 	newlog := log.New()
+
+	// newlog.SetOutput(logFile)
+	// log.SetOutput(newlog.Writer())
+	if err != nil {
+		fmt.Printf("Error: %s\n", err)
+		return
+	}
+	// defer logFile.Close()
+
+	log.SetOutput(logFile)
+	log.SetLevel(log.TraceLevel)
+}
+
 func (e *Event) Type() string {
 	return e.LogLevel.String()
 }

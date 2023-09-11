@@ -177,6 +177,7 @@ func updateRules(rules []C.Rule) {
 }
 
 func updateTunnels(tunnels []config.Tunnel) {
+	// 数据输入？
 	listener.PatchTunnel(tunnels, tunnel.TCPIn(), tunnel.UDPIn())
 }
 
