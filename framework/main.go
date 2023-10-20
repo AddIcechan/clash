@@ -116,8 +116,8 @@ func CloseAllConnections() {
 
 *
 */
-func CustomLogFile(logPath string, level int, maxCount int) {
-	log.CustomLogPath(logPath, level, maxCount)
+func CustomLogFile(logPath string, level int, maxCount int, isLimit bool) {
+	log.CustomLogPath(logPath, level, maxCount, isLimit)
 }
 
 func SetGCPrecent(v int) {

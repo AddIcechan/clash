@@ -76,15 +76,19 @@ func SetLevel(newLevel LogLevel) {
 
 var maxLogCount = 0
 var currentLogCount = 0
+var isLogLimit = true
 
 func print(data Event) {
 	if data.LogLevel < level {
 		return
 	}
-	currentLogCount += 1
 
-	if maxLogCount > 0 && currentLogCount > maxLogCount {
-		return
+	if isLogLimit {
+		currentLogCount += 1
+
+		if maxLogCount > 0 && currentLogCount > maxLogCount {
+			return
+		}
 	}
 
 	switch data.LogLevel {
@@ -108,9 +112,10 @@ func newLog(logLevel LogLevel, format string, v ...any) Event {
 	}
 }
 
-func CustomLogPath(logPath string, level int, maxCount int) {
+func CustomLogPath(logPath string, level int, maxCount int, isLimit bool) {
 
 	maxLogCount = maxCount
+	isLogLimit = isLimit
 	var logFilePath = logPath
 	logFile, err := os.OpenFile(logFilePath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	// 	newlog := log.New()
