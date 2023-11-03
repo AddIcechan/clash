@@ -9,17 +9,20 @@ import "C"
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"runtime/debug"
 
+	"github.com/Dreamacro/clash/adapter/provider"
 	"github.com/Dreamacro/clash/config"
 	"github.com/Dreamacro/clash/constant"
 	"github.com/Dreamacro/clash/hub/executor"
 	"github.com/Dreamacro/clash/log"
 	"github.com/Dreamacro/clash/tunnel/statistic"
 
-	t "github.com/Dreamacro/clash/tunnel"
+	// "github.com/eycorsican/go-tun2socks/client"
+
+	N "github.com/Dreamacro/clash/common/net"
+	"github.com/Dreamacro/clash/common/pool"
 )
 
 // framework support
@@ -28,7 +31,7 @@ func ReadConfig(path string) ([]byte, error) {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		return nil, err
 	}
-	data, err := ioutil.ReadFile(path)
+	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
@@ -126,19 +129,41 @@ func SetGCPrecent(v int) {
 func FreeOSMemory() {
 	debug.FreeOSMemory()
 }
+func SetBufferSize(tcp, udp int) {
+	N.TCPBufferSize = tcp
+	pool.RelayBufferSize = tcp
+	pool.UDPBufferSize = udp
+}
+func SetMaxConnectCount(max, free int) {
+	N.MaxConnectCount = max
+	N.FreeConnectCount = free
+}
 
-func SetConnectCount(tcp int, udp int, tcpTimeout int) {
-	t.SetGoCountAndTimeout(tcp, udp, tcpTimeout)
+type InfoCallBack interface {
+	HealthTest(result string)
 }
-func ClearTcpConn() {
-	t.SetClear(true)
+
+func SetCallBack(callBack InfoCallBack) {
+	provider.HealthCheckCallBack = func(result string) {
+		callBack.HealthTest(result)
+	}
 }
-func Restart() {
-	// rawConfig, _ := GetRawCfgByPath(cfgPath)
-	// cfg, _ := config.ParseRawConfig(rawConfig)
-	// executor.ApplyConfig(cfg, true)
-	t.ReStart()
-}
+
+// func StartTun2socks(tunfd int, host string, port int, mtu int, udpEnable bool, udpTimeout int) string {
+// 	return client.StartTun2socks(tunfd, host, port, mtu, udpEnable, udpTimeout)
+// }
+
+// func InputPacket(packet []byte) {
+// 	client.InputPacket(packet)
+// }
+
+// type PacketFlow interface {
+// 	Write([]byte)
+// }
+
+// func StartTun2socksIO(flow PacketFlow, host string, port int, mtu int, udpEnable bool, udpTimeout int) string {
+// 	return client.StartTun2socksIO(flow, host, port, mtu, udpEnable, udpTimeout)
+// }
 
 // client := &http.Client{}
 // 	req, err := http.NewRequest("PUT", fmt.Sprintf("http://%s/configs?path=%s&force=true", externalControllerAddr, cfgPath), nil)

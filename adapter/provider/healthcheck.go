@@ -9,7 +9,6 @@ import (
 
 	"github.com/Dreamacro/clash/common/batch"
 	C "github.com/Dreamacro/clash/constant"
-	"github.com/Dreamacro/clash/log"
 
 	"github.com/samber/lo"
 	"go.uber.org/atomic"
@@ -74,7 +73,7 @@ func (hc *HealthCheck) checkAll() {
 	hc.check(hc.proxies)
 }
 
-var isFirstTest = true
+var HealthCheckCallBack func(result string)
 
 func (hc *HealthCheck) check(proxies []C.Proxy) {
 	b, _ := batch.New(context.Background(), batch.WithConcurrencyNum(10))
@@ -88,9 +87,7 @@ func (hc *HealthCheck) check(proxies []C.Proxy) {
 		})
 	}
 	b.Wait()
-
-	if isFirstTest {
-		isFirstTest = false
+	go func(proxies []C.Proxy) {
 		fast := proxies[0]
 		logString := ""
 		var dic = make(map[string]interface{}, 0)
@@ -105,8 +102,11 @@ func (hc *HealthCheck) check(proxies []C.Proxy) {
 		data, _ := json.Marshal(dic)
 		var d = string(data)
 		logString = fmt.Sprintf("<<url-test:%s>>", d)
-		log.Infoln("%s", logString)
-	}
+		if HealthCheckCallBack != nil {
+			HealthCheckCallBack(logString)
+		}
+	}(proxies)
+
 }
 
 func (hc *HealthCheck) close() {

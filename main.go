@@ -1,8 +1,11 @@
 package main
 
 import (
+	"clash"
 	"flag"
 	"fmt"
+	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -61,6 +64,10 @@ func main() {
 	}
 	currentPath, _ := os.Getwd() // 获取当前路径
 	C.SetHomeDir(currentPath)
+	// clash.SetBufferSize(1024, 1024*5)
+	// clash.SetGCPrecent(20)
+	clash.SetBufferSize(1024, 1024*10)
+	go http.ListenAndServe(":6060", nil)
 
 	if configFile != "" {
 		if !filepath.IsAbs(configFile) {
